@@ -18,14 +18,15 @@
  
  const options = yargs
      .usage("Usage: -d <destinationBranch>")
-     .option("d", { alias: "destination", describe: "destination branch", type: "string", demandOption: true })
-     .option("u", { alias: "username", describe: "enter org/username you want to deploy", type: "string" })
-     .option("c", { alias: "checkOnly", describe: "no real deploy just validate", type: "boolean" })
-     .option("l", { alias: "testLevel", describe: "test level specified after deploy", type: "string" })
+     .option("t", { alias: "targetBranch", describe: "target branch", type: "string", demandOption: true })
+     .option("u", { alias: "username", describe: "org/username you want to deploy", type: "string" })
+     .option("c", { alias: "checkOnly", describe: "validate package", type: "boolean" })
+     .option("l", { alias: "testLevel", describe: "test level of deploy", type: "string" })
+     .option("d", { alias: "deploy", describe: "perform deploy", type: "boolean" })
      .argv;
  
  
- let targetBranch = options.destination;
+ let targetBranch = options.targetBranch;
  if (methods.isArgumentValid(targetBranch)){return;}
  
  //run git command to find the differences between current and target branch
@@ -39,7 +40,7 @@
  //copy files FromSource to Destinatior
  let filesCoppied = methods.filesCopyFromSourceToDestinationFolder(sourceDestinationBranchesFilesDiff, SOURCE_FOLDER, DESTINATION_FOLDER);
  
- if(options.username != null || options.testLevel != null){
+ if(options.deploy){
      const excecutionResult = exec(methods.sfdxCommandGenerator(options), { encoding: 'utf-8' });
      excecutionResult.stdout.on('data', function(data) {
          console.log(data); 
