@@ -6,7 +6,7 @@ SS-17
 <br />
 <div align="center">
   
-  <h3 align="center"> Salesforce - Source Delta Deploy (sf-sfdx) </h3>
+  <h3 align="center"> Salesforce - SFDX (sf-sfdx) </h3>
 
   <p align="center">
     Are you ready to finish your deploys in no time?!
@@ -104,11 +104,10 @@ tools required
    ```sh 
     sf-sfdx -d targetbranch -c -u orgToDeploy -l RunLocalTests
    ```  
-Where 
-``-l determines the test level
-  -c determines if its check only 
-  -u determines the org that the package will be deployed
-``    
+Where: 
+``-l determines the test level``
+``-c determines if its check only`` 
+``-u determines the org that the package will be deployed``    
    
 <p align="right">(<a href="#top">back to top</a>)</p>
 
