@@ -79,9 +79,9 @@ tools required
   ```sh
   npm install npm@latest -g
   ```
-* ant migration tool
+* salesforce cli
   ```sh
-  https://developer.salesforce.com/docs/atlas.en-us.daas.meta/daas/meta_development.htm
+  https://developer.salesforce.com/tools/sfdxcli
   ```
 * git
   ```sh
@@ -95,18 +95,20 @@ tools required
    npm i sf-sfdx -g
    ```
 2. Add on .gitignore file the delta_deploy folder
-3. Modify the build.xml so that deployroot points to the delta_deploy/package folder
-   ```
-    <target name="deployCode">
-      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" deployroot="delta_deploy/package">
-      </sf:deploy>
-    </target>
-    ```
-4. Run the command (generates package.xml + copies the files inside the deployable folder)
+
+3. Run the followin command  that generates a package with just the modifications
    ```sh 
     sf-sfdx -d targetbranch
    ```
-5. excecute ant migration tool
+4. In case you want also to deploy after the creation of the package use the following commands
+   ```sh 
+    sf-sfdx -d targetbranch -c -u orgToDeploy -l RunLocalTests
+   ```  
+Where 
+``-l determines the test level
+  -c determines if its check only 
+  -u determines the org that the package will be deployed
+``    
    
 <p align="right">(<a href="#top">back to top</a>)</p>
 
