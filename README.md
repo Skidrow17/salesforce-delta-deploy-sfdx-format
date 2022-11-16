@@ -96,7 +96,7 @@ tools required
    ```
 2. Add on .gitignore file the delta_deploy folder
 
-3. Run the followin command  that generates a package with just the modifications
+3. Run the following command  that generates a package just with the modified files from the targetbranch
    ```sh 
     sf-sfdx -d targetbranch
    ```
