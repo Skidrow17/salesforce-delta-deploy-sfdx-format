@@ -1,6 +1,6 @@
 {
   "name": "sf-sfdx",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "main": "./delta_deploy.js",
   "dependencies": {
     "fs-extra": "^10.1.0",
