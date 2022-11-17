@@ -2,13 +2,6 @@ const utilMethod = require('../delta_deploy/util/Methods.js')
 const {NOT_REMOTE_BRANCH_SPECIFIED, REMOTE_BRANCH_NOT_CORRECT_FORMAT} = require('../delta_deploy/util/Constants.js');
 const fse = require('fs-extra');
 
-
-test('splitOnce', () => {
-    var separatedString  = "hello/world/!!";
-    var separator = "/";
-    expect(utilMethod.splitOnce(separatedString, separator).length).toBe(2);
-});
-
 test('addValueToKey', () => {
 
     let mapToList = new Map();

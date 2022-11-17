@@ -20,20 +20,6 @@ const addValueToKey = (key, value, folderFileName) => {
     }
 };
 
-/****************************************************************************************************
- author : Silvan Sholla
- date : 25/06/22
- @param {String} stringToSplit - contains the string that we want to split
- @param {String} separator - contains the separator we want to use
- description : splits the string just on the first reference
- of the separator
- ****************************************************************************************************/
-
-const splitOnce = (stringToSplit, separator) => {
-    [first, ...rest] = stringToSplit.split(separator);
-    return [first, rest.length > 0? rest.join(separator) : null];
-};
-
 
 /****************************************************************************************************
  author : Silvan Sholla
@@ -108,8 +94,6 @@ const filesCopyFromSourceToDestinationFolder = (files,sourceDirectory,destinatio
                 fse.copySync(file.concat(META_XML),file.replace(sourceDirectory, destinationDirectory).concat(META_XML));
             }
 
-            let objectFileMap = splitOnce(file.replace(sourceDirectory.concat(FOLDER_SEPARATOR),''),FOLDER_SEPARATOR);
-            addValueToKey(objectFileMap[0],splitOnce(objectFileMap[1],'.')[0],folderFilesMap);
         }
 
     });
@@ -144,7 +128,6 @@ const sfdxCommandGenerator = (options) => {
 
 
 exports.addValueToKey = addValueToKey;
-exports.splitOnce = splitOnce;
 exports.jsonToMap = jsonToMap;
 exports.filesCopyFromSourceToDestinationFolder = filesCopyFromSourceToDestinationFolder;
 exports.isArgumentValid = isArgumentValid
